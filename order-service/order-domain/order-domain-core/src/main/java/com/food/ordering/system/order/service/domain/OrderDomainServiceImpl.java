@@ -1,5 +1,7 @@
 package com.food.ordering.system.order.service.domain;
 
+import static com.food.ordering.system.domain.utils.DomainConstants.UTC;
+
 import com.food.ordering.system.domain.valueobject.ProductId;
 import com.food.ordering.system.order.service.domain.entity.Order;
 import com.food.ordering.system.order.service.domain.entity.Product;
@@ -17,8 +19,6 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class OrderDomainServiceImpl implements OrderDomainService {
-
-    private final String UTC = "UTC";
 
     @Override
     public OrderCreatedEvent validateAndInitiateOrder(Order order, Restaurant restaurant) {

@@ -10,6 +10,7 @@ import com.food.ordering.system.order.service.domain.exception.OrderDomainExcept
 import com.food.ordering.system.order.service.domain.valueobject.OrderItemId;
 import com.food.ordering.system.order.service.domain.valueobject.StreetAddress;
 import com.food.ordering.system.order.service.domain.valueobject.TrackingId;
+
 import java.util.List;
 import java.util.UUID;
 
@@ -65,7 +66,7 @@ public class Order extends AggregateRoot<OrderId> {
         updateFailureMessages(failureMessages);
     }
 
-    public void cancel() {
+    public void cancel(List<String> failureMessages) {
         if (orderStatus != OrderStatus.PENDING && orderStatus != OrderStatus.CANCELLING) {
             throw new OrderDomainException("Order is not in the correct state for cancel operation!");
         }

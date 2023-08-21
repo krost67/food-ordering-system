@@ -26,7 +26,7 @@ public class RestaurantDomainServiceImpl implements RestaurantDomainService {
         restaurant.validateOrder(failureMessages);
 
         if (!failureMessages.isEmpty()) {
-            log.info("Order is rejected for order id [{}]", restaurant.getOrderDetail().getId().getValue());
+            log.error("Order is rejected for order id [{}]", restaurant.getOrderDetail().getId().getValue());
             restaurant.constructOrderApproval(OrderApprovalStatus.REJECTED);
             return new OrderRejectedEvent(
                     restaurant.getOrderApproval(),
